@@ -17,43 +17,44 @@
     Character Art Commission Sheet
   </p>
   <div class="content">
+  <form id="commission" method="post" action="index.php">
   <p class="header">
-    Basics
+    Character Basics
   </p>
   <table>
     <tr>
       <td class="q">
         Name
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chname" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Race
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chrace" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Class
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chclass" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Height
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input  name="chheight" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Weight
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chweight" type='text'>
       </td>
     </tr>
   </table>
@@ -65,28 +66,28 @@
       <td class="q">
         Skin
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chskin" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Hair
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chhair" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Eyes
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="cheyes" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Any Outstanding<br />Physical Characteristics
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chany" type='text'>
       </td>
     </tr>
   </table>
@@ -98,42 +99,42 @@
       <td class="q">
         Head
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chhead" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Chest
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chchest" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Arms
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="charms" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Legs
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chlegs" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Feet
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chfeet" type='text'>
       </td>
     </tr>
     <tr>
       <td class="q">
         Other Equipment<br />Carried
       </td>
-      <td class="a"><input type='text'>
+      <td class="a"><input name="chother" type='text'>
       </td>
     </tr>
   </table>
@@ -142,12 +143,87 @@
   </p>
   <table>
     <tr>
-      <td class="b"><textarea></textarea>
+      <td class="b"><textarea name="chnotes"></textarea>
       </td>
     </tr>
   </table>
+  
+  
+  <input id="submit" name="submit" type="submit" value="Submit">
+  </form>
   </div>
 </body>
+
+
+
+<?php
+if (isset($_POST['chname'])){
+    $name = $_POST['chname'];
+}
+    if (isset($_POST['chrace'])){
+    $race = $_POST['chrace'];
+}
+	if (isset($_POST['chclass'])){
+    $class = $_POST['chclass'];
+}
+	if (isset($_POST['chheight'])){
+    $height = $_POST['chheight'];
+}
+	if (isset($_POST['chweight'])){
+    $weight = $_POST['chweight'];
+}
+if (isset($_POST['chskin'])){
+    $skin = $_POST['chskin'];
+}
+    if (isset($_POST['chhair'])){
+    $hair = $_POST['chhair'];
+}
+	if (isset($_POST['cheyes'])){
+    $eyes = $_POST['cheyes'];
+}
+	if (isset($_POST['chany'])){
+    $any = $_POST['chany'];
+}
+    if (isset($_POST['chhead'])){
+    $head = $_POST['chhead'];
+}
+	if (isset($_POST['chchest'])){
+    $chest = $_POST['chchest'];
+}
+	if (isset($_POST['charms'])){
+    $arms = $_POST['charms'];
+}
+    if (isset($_POST['chlegs'])){
+    $legs = $_POST['chlegs'];
+}
+	if (isset($_POST['chfeet'])){
+    $feet = $_POST['chfeet'];
+}
+	if (isset($_POST['chother'])){
+    $other = $_POST['chother'];
+}
+	if (isset($_POST['chnotes'])){
+    $notes = $_POST['chnotes'];
+}
+if (isset($_POST['submit'])){
+    $submit = $_POST['submit'];
+}
+    $from = 'From:'.$_POST['askname'].''; 
+    $to = 'lambishsheep@gmail.com'; 
+    $subject = 'Hummingbird Error Report';
+			
+    $body = "$name ($email) is reporting an issue with $page page on the $tab tab.\nTicket Number: $ticket\nDid you clear your cache?: $secache\nWhat browser are you using?: $sebrowser\n\nSteps to produce the error:\n$message\n\nCan the issue be intentionally reproduced?: $reproduce";
+				
+    	if ($_POST['submit'] && $human == '4') {			 
+        if (mail ($to, $subject, $body, $from)) { 
+	    echo '<tr>
+			<td align="center" colspan="2" style="color:#cbd6cb; font-style:italic; font-family:georgia;">Thanks for the feedback!</td></tr>';
+	} else { 
+	    echo '<tr>
+			<td align="center" colspan="2" style="color:gold; font-style:italic; font-family:georgia;">Aw dang, man. You broke it!</td></tr>'; 
+	} 
+    }
+?>
 
 
 <style>
@@ -225,7 +301,7 @@ tr {
 
 input {
 	color: black !important;
-	width: 90%;
+	width: 95%;
 	border: none;
 }
 
