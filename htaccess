@@ -1,0 +1,18 @@
+# ALLOW USER BY IP
+
+ order deny,allow
+ deny from all
+ allow from 76.75.3.174
+ allow from 75.143.197.52
+ allow from 69.145.223.236
+ allow from 216.220.9.192/27
+
+AddHandler application/x-httpd-ea-php70 .php .php5 .php53 .html
+AddType application/x-httpd-php53 .php .html .htm
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php72” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddType application/x-httpd-ea-php72 .php .php7 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
